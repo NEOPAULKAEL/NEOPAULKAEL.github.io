@@ -11,6 +11,12 @@
         <content type="html"><![CDATA[<blockquote><p>用以整理、记录K8S、Docker相关</p><p>第一次接触K8S是在工作中需要使用K8S部署系统，然而公司里面大部分的同事做的都是servlet、jsp这些的老系统，而我很幸运的接到微服务化改造的任务（三生有幸啊）！故而直接K8S部署、ELK日志管理、SkyWalking链路追踪来了一整套。有空的话会慢慢补全的（虽然不太有空闲时间），当然如果时间多了，可以整理出一套公司目前DEV OPT的记录、感想，仅作个人整理所用，如果有缘的你刚好看见，有指正或者完善的建议，可以联系我哦。</p></blockquote><p>[TOC]</p><h1 id="K8S-DOCKER"><a href="#K8S-DOCKER" class="headerlink" title="K8S DOCKER"></a>K8S DOCKER</h1><h1 id="ELK"><a href="#ELK" class="headerlink" title="ELK"></a>ELK</h1><h1 id="SkyWalking"><a href="#SkyWalking" class="headerlink" title="SkyWalking"></a>SkyWalking</h1>]]></content>
       
       
+      <categories>
+          
+          <category> 技术相关 </category>
+          
+      </categories>
+      
       
         <tags>
             
@@ -39,7 +45,11 @@
       
         <tags>
             
-            <tag> netty,NIO,BIO </tag>
+            <tag> netty </tag>
+            
+            <tag> NIO </tag>
+            
+            <tag> BIO </tag>
             
         </tags>
       
