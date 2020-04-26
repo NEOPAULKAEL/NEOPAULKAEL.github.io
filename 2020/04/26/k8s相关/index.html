@@ -12,7 +12,7 @@
 
 
 
-<title>netty study | 冲鸭！Cro</title>
+<title>k8s相关 | 冲鸭！Cro</title>
 
 
 
@@ -173,7 +173,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">netty study</h1>
+            <h1 class="post-title">k8s相关</h1>
             
                 <div class="post-meta">
                     
@@ -182,7 +182,7 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">April 23, 2020&nbsp;&nbsp;14:41:26</a>
+                        Date: <a href="#">April 26, 2020&nbsp;&nbsp;23:37:14</a>
                         </span>
                     
                     
@@ -191,67 +191,12 @@
         </header>
 
         <div class="post-content">
-            <p>[TOC]</p>
-<h1 id="Netty-is-fun"><a href="#Netty-is-fun" class="headerlink" title="Netty is fun!"></a>Netty is fun!</h1><blockquote>
-<p>仅用作记录和完善知识体系架构。</p>
-<blockquote>
-<p>打卡记录</p>
-<p>4-12 V6</p>
-<p>4-14 V8</p>
+            <blockquote>
+<p>用以整理、记录K8S、Docker相关</p>
+<p>第一次接触K8S是在工作中需要使用K8S部署系统，然而公司里面大部分的同事做的都是servlet、jsp这些的老系统，而我很幸运的接到微服务化改造的任务（三生有幸啊）！故而直接K8S部署、ELK日志管理、SkyWalking链路追踪来了一整套。有空的话会慢慢补全的（虽然不太有空闲时间），当然如果时间多了，可以整理出一套公司目前DEV OPT的记录、感想，仅作个人整理所用，如果有缘的你刚好看见，有指正或者完善的建议，可以联系我哦。</p>
 </blockquote>
-</blockquote>
-<h2 id="basic"><a href="#basic" class="headerlink" title="basic"></a>basic</h2><p>1.异步的、以事件驱动的网络应用框架<br>2.TCP/IP  –  原生jdk io/network  –  NIO  –  netty（框架）</p>
-<h2 id="RPC框架-远程调用框架"><a href="#RPC框架-远程调用框架" class="headerlink" title="RPC框架 远程调用框架"></a>RPC框架 远程调用框架</h2><ul>
-<li><input disabled type="checkbox"> </li>
-</ul>
-<h2 id="I-O模型"><a href="#I-O模型" class="headerlink" title="I/O模型"></a>I/O模型</h2><ul>
-<li><input disabled type="checkbox"> BIO/NIO/多路复用IO… 四种io模型</li>
-<li><input disabled type="checkbox"> 确认内容</li>
-<li><input disabled type="checkbox"> 同步非同步/阻塞非阻塞</li>
-</ul>
-<h3 id="BIO-blocking-i-o"><a href="#BIO-blocking-i-o" class="headerlink" title="BIO  blocking i/o"></a>BIO  blocking i/o</h3><ul>
-<li><p>阻塞并同步，一个连接一个线程，如果无法立即返回，则会导致阻塞。</p>
-</li>
-<li><p>一个客户端创建一个线程与之通信，如果连接的客户端暂时没有数据发送，会一直阻塞在read，占用服务器资源。</p>
-</li>
-<li><p>适用：连接数目比较小且固定的架构，服务器要求较高。</p>
-<p>BIO 传统IO</p>
-<blockquote>
-<p>简单流程</p>
-<ul>
-<li>服务端启动一个websocket</li>
-<li>客户端启动socket进行通讯，（一般）服务器端需要对每一个客户端建立一个线程与之通讯</li>
-<li>客户端发出请求后，先咨询服务器是否有空闲线程响应，如果没有则等待或遭到服务端拒绝</li>
-<li>如果有响应，会一直等待到服务端处理完毕</li>
-</ul>
-</blockquote>
-</li>
-</ul>
-<h3 id="NIO"><a href="#NIO" class="headerlink" title="NIO"></a>NIO</h3><ul>
-<li>非阻塞 同步，一个线程处理多个（通道）请求</li>
-<li>面向缓冲区  – 数据写入到缓冲区中，需要时再可在缓冲区中前后移动， – 实现非阻塞</li>
-<li>适用：连接数目多且连接比较短的架构，比如：聊天服务器、弹幕系统等。</li>
-<li>三个组件：<ul>
-<li>selector – 选择通道</li>
-<li>channel – 通过channel read/write</li>
-<li>buffer – 程序与buffer进行数据读写</li>
-</ul>
-</li>
-</ul>
-<h3 id="AIO"><a href="#AIO" class="headerlink" title="AIO"></a>AIO</h3><ul>
-<li>JDK1.7之后存在，异步非阻塞。</li>
-<li>适用：连接数目多且连接比较长的架构，比如：相册服务器等。充分调用OS参与操作，但是应用还不是很广泛。</li>
-</ul>
-<h2 id="NIO-VS-BIO"><a href="#NIO-VS-BIO" class="headerlink" title="NIO VS BIO"></a>NIO VS BIO</h2><ol>
-<li>NIO是块读写，BIO是流读写，块的处理效率比流的效率更高</li>
-<li>NIO非阻塞，BIO阻塞</li>
-<li><ul>
-<li><input disabled type="checkbox"> （NS） buffer 当有足够的数据读写时，线程才会处理，其余时间线程可以处理其他内容，所以是‘异步’的，而BIO每一个客户端连接，服务端就需要开启一个线程处理。</li>
-</ul>
-</li>
-<li>NIO 一个线程管理多个客户端，当一个channel有事件发生时，selector选中这个通道。</li>
-</ol>
-
+<p>[TOC]</p>
+<h1 id="K8S-DOCKER"><a href="#K8S-DOCKER" class="headerlink" title="K8S DOCKER"></a>K8S DOCKER</h1><h1 id="ELK"><a href="#ELK" class="headerlink" title="ELK"></a>ELK</h1><h1 id="SkyWalking"><a href="#SkyWalking" class="headerlink" title="SkyWalking"></a>SkyWalking</h1>
         </div>
 
         
@@ -265,7 +210,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="http://croing.cn/2020/04/23/netty-study/">http://croing.cn/2020/04/23/netty-study/</a></span>
+                        <span><a href="http://croing.cn/2020/04/26/k8s%E7%9B%B8%E5%85%B3/">http://croing.cn/2020/04/26/k8s%E7%9B%B8%E5%85%B3/</a></span>
                     </p>
                 
                 
@@ -283,6 +228,10 @@
                 <span>Tag(s):</span>
                 <span class="tag">
                     
+                    
+                        <a href="/tags/K8S/"># K8S</a>
+                    
+                        
                 </span>
             </div>
             <div>
@@ -293,8 +242,8 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2020/04/26/k8s%E7%9B%B8%E5%85%B3/">k8s相关</a>
             
+            <a class="next" rel="next" href="/2020/04/23/netty-study/">netty study</a>
             
         </section>
 
